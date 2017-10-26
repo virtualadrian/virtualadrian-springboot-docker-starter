@@ -1,8 +1,6 @@
-package com.virtualadrian.featuregroup.company.controller;
+package com.virtualadrian.services.company;
 
 import com.virtualadrian.base.BaseController;
-import com.virtualadrian.featuregroup.company.model.CompanyModel;
-import com.virtualadrian.featuregroup.company.service.CompanyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

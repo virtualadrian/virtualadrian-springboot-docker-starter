@@ -1,4 +1,4 @@
-package com.virtualadrian.featuregroup.account.model;
+package com.virtualadrian.services.account;
 
 import java.util.Date;
 

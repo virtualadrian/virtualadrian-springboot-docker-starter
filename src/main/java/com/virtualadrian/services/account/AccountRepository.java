@@ -1,6 +1,5 @@
-package com.virtualadrian.featuregroup.account.repository;
+package com.virtualadrian.services.account;
 
-import com.virtualadrian.featuregroup.account.entity.AccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

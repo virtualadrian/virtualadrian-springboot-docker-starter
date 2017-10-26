@@ -1,8 +1,6 @@
-package com.virtualadrian.featuregroup.template.service;
+package com.virtualadrian.services.template;
 
 import com.virtualadrian.base.BaseCrudService;
-import com.virtualadrian.featuregroup.template.entity.TemplateEntity;
-import com.virtualadrian.featuregroup.template.model.TemplateModel;
 import org.springframework.stereotype.Service;
 
 @Service

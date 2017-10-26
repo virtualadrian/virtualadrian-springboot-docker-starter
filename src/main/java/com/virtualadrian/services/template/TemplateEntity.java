@@ -1,16 +1,13 @@
-package com.virtualadrian.featuregroup.account.entity;
+package com.virtualadrian.services.template;
 
 import com.virtualadrian.base.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="template")
-public class AccountEntity extends BaseEntity {
+public class TemplateEntity extends BaseEntity {
 
     @Id
     @Column(name="id")

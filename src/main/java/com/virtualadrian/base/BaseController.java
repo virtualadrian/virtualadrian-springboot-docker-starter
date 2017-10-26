@@ -1,6 +1,6 @@
 package com.virtualadrian.base;
 
-import com.virtualadrian.featuregroup.template.controller.TemplateController;
+import com.virtualadrian.services.template.TemplateController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

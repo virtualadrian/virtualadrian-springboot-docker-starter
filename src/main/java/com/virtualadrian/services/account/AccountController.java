@@ -1,8 +1,6 @@
-package com.virtualadrian.featuregroup.account.controller;
+package com.virtualadrian.services.account;
 
 import com.virtualadrian.base.BaseController;
-import com.virtualadrian.featuregroup.account.model.AccountModel;
-import com.virtualadrian.featuregroup.account.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

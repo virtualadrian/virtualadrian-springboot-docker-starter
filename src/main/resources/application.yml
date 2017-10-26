@@ -7,32 +7,6 @@ spring:
   aop:
     proxy-target-class: true
   profiles: default
-  banner:
-    location: ./banner.txt
-  devtools:
-    livereload:
-      enabled: true
-  jpa:
-    database: H2
-    generate-ddl: true
-  datasource:
-    url: "jdbc:h2:mem:default"
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
-    defaultSchema: "default"
-    hibernate:
-      hbm2ddl.auto: create
-      hbm2ddl.method: update
-      show_sql: true
-      format_sql: true
-      dialect: org.hibernate.dialect.H2Dialect
-    hikari:
-      maxPoolSize: 10
-    initialize: true
----
-spring:
-  profiles: develop
   devtools:
     livereload:
       enabled: true
@@ -40,11 +14,11 @@ spring:
     database: MYSQL
     generate-ddl: false
   datasource:
-    url: "jdbc:mysql://192.168.224.6:3306/servermonv1"
-    username: smonapiapp
-    password: Bblahblah123!
+    url: "jdbc:mysql://mysqldbms:3306/appdb"
+    username: appdbuser
+    password: P@ssword1
     driverClassName: com.mysql.jdbc.Driver
-    defaultSchema: "servermonv1"
+    defaultSchema: "appdb"
     hibernate:
       hbm2ddl.auto: validate
       hbm2ddl.method: update
@@ -52,7 +26,31 @@ spring:
       format_sql: true
       dialect: org.hibernate.dialect.MySQLDialect
     hikari:
-      maxPoolSize: 10
+      maximumPoolSize: 100
+      idle-timeout: 10000
+    initialize: true
+---
+spring:
+  profiles: develop
+  jpa:
+    database: MYSQL
+    generate-ddl: false
+  datasource:
+    url: "jdbc:mysql://mysqldbms:3306/appdb"
+    username: appdbuser
+    password: P@ssword1
+    driverClassName: com.mysql.jdbc.Driver
+    defaultSchema: "appdb"
+    hibernate:
+      hbm2ddl.auto: validate
+      hbm2ddl.method: update
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
+    hikari:
+      maximumPoolSize: 100
+      idle-timeout: 10000
+    initialize: true
 
 ---
 spring:
@@ -82,15 +80,37 @@ spring:
     password: password789
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
 ---
-# JWT Auth
-auth:
-  secret: some-random-secret
-  expires: 604800
-  header: Authorization
+## JWT Auth
+#auth:
+#  secret: some-random-secret
+#  expires: 604800
+#  header: Authorization
+#
+#security:
+#  aop:
+#    proxy-target-class: true
+#  basic:
+#    enabled: false
 
-security:
-  aop:
-    proxy-target-class: true
-  basic:
-    enabled: false
+javamelody:
+  # if you have auto-proxy issues, you can add the following property
+  # (and the spring-boot-starter-aop dependency in pom.xml):
+  #advisor-auto-proxy-creator-enabled: false
 
+  # Initialization parameters for JavaMelody
+  # See: https://github.com/javamelody/javamelody/wiki/UserGuide#6-optional-parameters
+  init-parameters:
+    # log http requests
+    log: true
+
+    # to exclude images, css, fonts and js urls from the monitoring:
+    #url-exclude-pattern: (/webjars/.*|/css/.*|/images/.*|/fonts/.*|/js/.*)
+
+    # to add basic auth:
+    #authorized-users: admin:pwd
+
+    # to change the default storage directory:
+    #storage-directory: /tmp/javamelody
+
+    # to change the default "/monitoring" path
+    #monitoring-path: /admin/performance

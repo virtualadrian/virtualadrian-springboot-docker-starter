@@ -1,27 +1,15 @@
-package com.virtualadrian.featuregroup.company.entity;
+package com.virtualadrian.services.company;
 
-import com.virtualadrian.base.BaseEntity;
+public class CompanyModel {
 
-import javax.persistence.*;
-
-@Entity
-@Table(name="company")
-public class CompanyEntity extends BaseEntity {
-
-  @Id
-  @Column(name="id")
   private long id;
 
-  @Column(name="company_name")
   private String companyName;
 
-  @Column(name="company_hq_lat")
   private String companyHqLat;
 
-  @Column(name="company_hq_lng")
   private String companyHqLng;
 
-  @Column(name="company_hq_addr")
   private String companyHqAddr;
 
 

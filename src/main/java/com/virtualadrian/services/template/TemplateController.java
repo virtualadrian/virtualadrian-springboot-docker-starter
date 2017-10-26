@@ -1,8 +1,6 @@
-package com.virtualadrian.featuregroup.template.controller;
+package com.virtualadrian.services.template;
 
 import com.virtualadrian.base.BaseController;
-import com.virtualadrian.featuregroup.template.model.TemplateModel;
-import com.virtualadrian.featuregroup.template.service.TemplateService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

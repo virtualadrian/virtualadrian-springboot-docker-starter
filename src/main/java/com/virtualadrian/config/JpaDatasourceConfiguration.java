@@ -72,6 +72,10 @@ public class JpaDatasourceConfiguration {
                 .build();
 
         dataSource.setMaximumPoolSize(maxPoolSize);
+        dataSource.setConnectionTimeout(30000);
+        dataSource.setValidationTimeout(30000);
+        dataSource.setIdleTimeout(30000);
+
         return dataSource;
     }
 
@@ -85,9 +89,11 @@ public class JpaDatasourceConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
-        factoryBean.setPackagesToScan(new String[] { "com.virtualadrian" });
+        factoryBean.setPackagesToScan("com.virtualadrian");
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+
         factoryBean.setJpaProperties(jpaProperties());
+
         return factoryBean;
     }
 
@@ -109,11 +115,15 @@ public class JpaDatasourceConfiguration {
         properties.put("hibernate.show_sql", environment.getRequiredProperty("spring.datasource.hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("spring.datasource.hibernate.format_sql"));
 
+        properties.put("hibernate.format_sql", environment.getRequiredProperty("spring.datasource.hibernate.format_sql"));
+
         String defaultSchema = environment.getRequiredProperty("spring.datasource.defaultSchema");
 
         if(defaultSchema != null && defaultSchema.equalsIgnoreCase("")){
             properties.put("hibernate.default_schema", environment.getRequiredProperty("spring.spring.defaultSchema"));
         }
+
+
         return properties;
     }
 
