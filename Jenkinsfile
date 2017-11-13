@@ -9,6 +9,7 @@ pipeline {
     stage('Build and Containerize') {
       steps {
         readMavenPom(file: 'pom.xml')
+        sh 'mvn -B clean prepare'
       }
     }
   }
